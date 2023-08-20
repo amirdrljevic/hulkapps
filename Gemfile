@@ -12,6 +12,7 @@ gem "stimulus-rails"
 gem "jbuilder"
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
+gem 'faker', '~> 3.2', '>= 3.2.1'
 
 #Set up environment variables to safely store credentials
 gem 'dotenv-rails', groups: [:development, :test]
