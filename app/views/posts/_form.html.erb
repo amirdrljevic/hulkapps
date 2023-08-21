@@ -1,6 +1,6 @@
 <%= form_with(model: post) do |form| %>
   <% if post.errors.any? %>
-    <div style="color: red">
+    <div id="error_explanation">
       <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
       <ul>
         <% post.errors.each do |error| %>
@@ -17,7 +17,7 @@
     <%= form.label :description %>
     <%= form.text_area :description, class: "form-control", placeholder: "Post description...", rows: 10 %>
   </div>
-  <div>
+  <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>

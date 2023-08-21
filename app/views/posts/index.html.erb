@@ -1,14 +1,31 @@
-<p style="color: green"><%= notice %></p>
-
 <h1>Posts</h1>
-
-<div id="posts">
+<div class="digg_pagination">
+  <div class="page_info">
+    <%= page_entries_info @posts %>
+  </div>
+  <%= will_paginate @posts, :container => true %>
+</div>
+<div class="row mb-2">
   <% @posts.each do |post| %>
-    <%= render post %>
-    <p>
-      <%= link_to "Show this post", post %>
-    </p>
+    <div class="col-md-6">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <h3 class="mb-0"><%= link_to post.title, post, class: "no_style_link" %></h3>
+          <div class="mb-1 text-muted"><%= post.created_at.strftime("%_d. %B %Y.") %></div>
+          <p class="card-text mb-auto">Author: <%= post.user.first_name + ' ' + post.user.last_name %></p>
+          <p><small><i><%= pluralize(post.comments.count, "comment") %></small></i></p>
+          <% if post.user == current_user %>
+            <div class="d-flex flex-row bd-highlight">
+              <div class="p-2 bd-highlight"><%= link_to 'Edit', edit_post_path(post), class: "btn btn-secondary" %> </div>
+              <div class="p-2 bd-highlight"><%= button_to 'Delete', post_path(post), method: :delete, class: "btn btn-secondary", data: { turbo_confirm: 'Are you sure?' } %></div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
   <% end %>
 </div>
-
-<%= link_to "New post", new_post_path %>
+<br>
+<% if user_signed_in? %>
+  <%= link_to 'New Post', new_post_path %>
+<% end %>

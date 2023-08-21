@@ -6,6 +6,6 @@
       <p><span class="content"><%= comment.comment %></span>
       </p>
       <% if comment.user == current_user %>
-        <p><%= link_to 'Delete comment', post_comment_path(@post, comment), method: :delete, data: { confirm: 'Are you sure?' } %></p>
+        <p><%= button_to 'Delete comment', post_comment_path(comment.post, comment), method: :delete, data: { turbo_confirm: 'Are you sure?' } %></p>
       <% end %>
     </li>

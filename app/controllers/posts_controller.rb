@@ -1,14 +1,24 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
-  before_action :logged_in_user, only: [:new, :create, :destroy]
+  before_action :logged_in_user, only: [:new, :create, :edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   # GET /posts or /posts.json
   def index
-    @posts = Post.all
+    if params[:my_posts]&.present? && params[:my_posts] == "true" 
+      @posts = current_user.posts.includes(:comments).paginate(page: params[:page], per_page: 2)
+    else
+      @posts = Post.includes(:comments).paginate(page: params[:page], per_page: 2)
+    end
   end
 
   # GET /posts/1 or /posts/1.json
   def show
+    @post = Post.find(params[:id])
+    @posts = Post.limit(7).order('id desc') #to populate the sidebar
+    @comment = @post.comments.build
+    @comment.user = current_user
+    @comments = @post.comments.paginate(page: params[:page], per_page: 3)
   end
 
   # GET /posts/new
@@ -50,11 +60,14 @@ class PostsController < ApplicationController
 
   # DELETE /posts/1 or /posts/1.json
   def destroy
-    @post.destroy
-
-    respond_to do |format|
-      format.html { redirect_to posts_url, notice: "Post was successfully destroyed." }
-      format.json { head :no_content }
+    if @post.comments.any?
+      redirect_to @post, notice: "Cannot delete a post with comments."
+    else
+      @post.destroy
+      respond_to do |format|
+        format.html { redirect_to posts_url, notice: "Post was successfully deleted." }
+        format.json { head :no_content }
+      end
     end
   end
 
@@ -77,5 +90,10 @@ class PostsController < ApplicationController
           format.json { head :no_content }      
         end
       end    
+    end
+
+    def correct_user
+      @post = current_user.posts.find_by(id: params[:id])
+      redirect_to posts_path, notice: "Not authorized to edit or delete this post" if @post.nil?
     end
 end

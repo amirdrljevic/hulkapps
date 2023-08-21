@@ -25,7 +25,7 @@
     posts = Post.order(:created_at).take(10)
     5.times do 
       content = Faker::Lorem.sentence(word_count: 5)
-      posts.each { |post| post.comments.create!(user_id: 1,
+      posts.each { |post| post.comments.create!(user_id: rand(1..5),
                                                 post_id: post,
                                                 comment: content) }
     end
