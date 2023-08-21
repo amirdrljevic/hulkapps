@@ -1,0 +1,124 @@
+@import "variables";
+
+// Global link styles
+.no_style_link {
+    text-decoration: none;
+    color: $dark-grey;
+  }
+  
+  // Pagination styles
+  .digg_pagination {
+    background: white;
+    cursor: default;
+    clear: both;
+    margin-bottom: $large-spacing;
+  
+    a, span, em {
+      padding: 0.2em 0.5em;
+      display: block;
+      float: left;
+      margin-right: 1px;
+    }
+  
+    .disabled {
+      color: $light-grey;
+      border: $standard-border $light-grey;
+    }
+  
+    .active {
+      font-style: normal;
+      font-weight: bold;
+      background: $highlight-blue;
+      color: white;
+      border: $standard-border $background-grey;
+    }
+  
+    a {
+      text-decoration: none;
+      color: $mid-grey;
+      border: $standard-border $border-blue;
+      
+      &:hover, &:focus {
+        color: $black;
+        border-color: $black;
+      }
+    }
+  
+    .page_info {
+      background: $background-grey;
+      color: white;
+      padding: 0.4em 0.6em;
+      width: 22em;
+      margin-bottom: $small-spacing;
+      text-align: center;
+    }
+  
+    .pagination {
+      flex-wrap: wrap;
+    }
+  
+    .page_info b {
+      color: $black;
+      background: $highlight-blue;
+      padding: 0.1em 0.25em;
+    }
+    
+    // Self-clearing method
+    &:after {
+      content: ".";
+      display: block;
+      height: 0;
+      clear: both;
+      visibility: hidden;
+    }
+    
+    * html & {
+      height: 1%;
+    }
+  
+    *:first-child + html & {
+      overflow: hidden;
+    }
+  }
+  
+  // Comments styling
+  .comments {
+    list-style: none;
+    padding: 0;
+    
+    li {
+      padding: $small-spacing;
+      margin-bottom: $medium-spacing;
+      list-style-position: inside;
+      border: $standard-border $very-light-grey;
+      border-radius: $standard-border-radius;
+    }
+  
+    .user {
+      color: $mid-grey;
+      margin-bottom: -$medium-spacing;
+      padding-top: 0;
+    }
+  
+    .content {
+      display: block;
+    }
+  
+    .timestamp {
+      color: $lighter-grey;
+      font-size: small;
+    }
+  }
+  
+  // Sidebar card styling
+  .sidebar_card {
+    margin-bottom: $medium-spacing;
+    border-radius: $standard-border-radius;
+  }
+  
+  // Button group styling
+  .flex-buttons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }

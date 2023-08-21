@@ -1,0 +1,102 @@
+// app/assets/stylesheets/users.scss
+
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #444;
+  }
+  
+  .profile-info {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    
+    div {
+      margin-bottom: 10px;
+    }
+  }
+  
+  .statistics {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+  
+    .stat-box {
+      border: 1px solid #ddd;
+      padding: 1rem;
+      border-radius: 5px;
+      text-align: center;
+      width: 120px;
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  
+      h2 {
+        margin-top: 0;
+        font-size: 24px;
+        color: #333;
+      }
+  
+      p {
+        margin-bottom: 0;
+        font-size: 16px;
+        color: #777;
+      }
+    }
+  }
+  
+  .action-links {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 2rem;
+  
+    .btn {
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      display: inline-block;
+      border-radius: 4px;
+      transition: background-color 0.3s, transform 0.3s;
+  
+      &:hover {
+        transform: translateY(-2px);
+      }
+    }
+  
+    .btn-primary {
+      background-color: #007bff;
+      color: white;
+      border: 1px solid #007bff;
+  
+      &:hover {
+        background-color: #0056b3;
+      }
+    }
+  
+    .btn-warning {
+      background-color: #ffc107;
+      color: black;
+      border: 1px solid #ffc107;
+  
+      &:hover {
+        background-color: #e0a800;
+      }
+    }
+  }
+  
+  a {
+    color: #007bff;
+    text-decoration: none;
+  
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  

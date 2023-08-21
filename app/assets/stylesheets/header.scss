@@ -1,0 +1,26 @@
+@import "variables";
+// Header Styles
+.header-navbar {
+    background-color: $header-bgd; 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  
+    .navbar-brand {
+      color: $dark-grey;
+      &:hover {
+        color: $mid-grey;
+      }
+    }
+  
+    .nav-link {
+      color: $dark-grey;
+      &:hover {
+        color: $mid-grey;
+        background-color: transparent;
+      }
+    }
+  
+    .navbar-text {
+      color: $mid-grey;
+    }
+  }
+  
