@@ -13,6 +13,9 @@ gem "jbuilder"
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 gem 'faker', '~> 3.2', '>= 3.2.1'
+gem 'will_paginate', '~> 4.0'
+gem 'will_paginate-bootstrap', '~> 1.0', '>= 1.0.2'
+gem 'sassc-rails', '~> 2.1', '>= 2.1.2'
 
 #Set up environment variables to safely store credentials
 gem 'dotenv-rails', groups: [:development, :test]
