@@ -1,0 +1,26 @@
+<h1><%= @user.first_name %> <%= @user.last_name %>'s Profile</h1>
+<div class="profile-info mb-4">
+  <div class="mb-2">
+    <strong>Name:</strong> <%= "#{@user.first_name} #{@user.last_name}" %>
+  </div>
+  <div>
+    <strong>Email:</strong> <%= @user.email %>
+  </div>
+</div>
+<div class="statistics">
+  <div class="stat-box">
+    <h2><%= @post_count %></h2>
+    <p>Posts</p>
+  </div>
+  <div class="stat-box">
+    <h2><%= @comment_count %></h2>
+    <p>Comments</p>
+  </div>
+</div>
+<div class="action-links mt-4">
+  <% if user_signed_in? && current_user == @user %>
+    <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-warning" %>
+    <%= link_to "Add Post", new_post_path, class: "btn btn-primary ml-2" %>
+  <% end %>
+</div>
+<%= link_to "Back", :back %>
